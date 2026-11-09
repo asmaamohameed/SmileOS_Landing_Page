@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+:root {
+  --navy: #022d58;
+  --ink: #1f2a44;
+  --ink-soft: #556070;
+  --muted: #7a8499;
+  --bg: #fdf7f6;
+  --card: #ffffff;
+  --line: #ece8ec;
+  --coral: #f28b82;
+  --coral-soft: #fbe8e6;
+  --coral-ink: #b23f36;
+  --blue-soft: #edf2f7;
+  --tab: #f3f5f9;
+}
+
+@theme inline {
+  --color-navy: var(--navy);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-muted: var(--muted);
+  --color-bg: var(--bg);
+  --color-card: var(--card);
+  --color-line: var(--line);
+  --color-coral: var(--coral);
+  --color-coral-soft: var(--coral-soft);
+  --color-coral-ink: var(--coral-ink);
+  --color-blue-soft: var(--blue-soft);
+  --color-tab: var(--tab);
+  --font-sans: var(--font-cairo), "Cairo", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+summary {
+  list-style: none;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+details[open] .chevron {
+  transform: rotate(180deg);
+}
+
+dialog.menu {
+  margin: 0;
+  width: 100%;
+  max-width: none;
+  border: 0;
+  padding: 1rem 1rem 1.5rem;
+  background: var(--card);
+  color: var(--ink);
+}
+
+dialog.menu::backdrop,
+dialog.player::backdrop {
+  background: rgba(2, 45, 88, 0.5);
+}
+
+dialog.player {
+  width: min(960px, calc(100% - 2rem));
+  max-width: none;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 1rem;
+  background: var(--card);
+  color: var(--ink);
+}
+
+.fade-up {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .fade-up:not(.is-in) {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .fade-up {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--coral-ink);
+  outline-offset: 2px;
+}
